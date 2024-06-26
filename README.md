@@ -14,6 +14,7 @@ A comprehensive setup guide for Ubuntu
 
 * [VS Code](https://code.visualstudio.com/)
 * [Sublime Text](https://www.sublimetext.com/)
+* [GitKraken](https://www.gitkraken.com/)
 * [Docker](https://www.docker.com/)
 * Emulation
   * [OSX-KVM](https://github.com/kholia/OSX-KVM)
