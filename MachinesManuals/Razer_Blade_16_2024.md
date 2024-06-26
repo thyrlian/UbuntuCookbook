@@ -25,7 +25,7 @@
 * **Fix & Tweaks**
 	* [No audio](https://www.reddit.com/r/razer/comments/1b9wh22/blade_202324_sound_issue_on_linux/)
 		* `sudo apt install alsa-tools`
-		* run script `RB16_2024_enable_internal_speakers.sh`
+		* run script [RB16_2024_enable_internal_speakers.sh](https://github.com/thyrlian/UbuntuCookbook/blob/main/MachinesManuals/RB16_2024_enable_internal_speakers.sh)
 	* RAM frequency (5600 MHz → 5200 MHz)
 		* [Razer Blade 16" (2024) supports Up to 96 GB DDR5-5200 MHz](https://mysupport.razer.com/app/answers/detail/a_id/5652/~/razer-blade-maximum-supported-storage-and-memory)
 		* [Razer Blade Pro 17 2020 No XMP profile?](https://insider.razer.com/razer-support-45/razer-blade-pro-17-2020-no-xmp-profile-11247)
