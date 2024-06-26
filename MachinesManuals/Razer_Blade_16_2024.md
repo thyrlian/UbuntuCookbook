@@ -1,3 +1,5 @@
+## Setup
+
 * **Hardware Upgrade**
 	* [Razer Blade 16 RAM- & SSD-Upgrades](https://www.crucial.de/compatible-upgrade-for/razer/razer-blade-16)
 * **Update BIOS** (must be in Windows)
@@ -46,3 +48,17 @@
 		* Software & Updates → Additional Drivers → NVIDIA Corporation: AD106M [GeForce RTX 4070 Max-Q/Mobile] → Using NVIDIA driver metapackage from nvidia-driver-535 (proprietary, tested)
 * **Installation**
 	* [OpenRazer](https://openrazer.github.io/)
+
+## References
+
+* [Lambda and Razer's Tensorbook](https://lambdalabs.com/deep-learning/laptops/tensorbook)
+* [Support Status of running Ubuntu on a Razer Blade](https://help.ubuntu.com/community/RazerBlade)
+* [Installing Arch Linux on Razer Blade](https://wiki.archlinux.org/title/Razer_Blade)
+* [Setting up Razer Blade 15 inch 2019 OLED version with Ubuntu 18.04 LTS](https://medium.com/@luca.diliello/setting-up-razer-blade-15-inch-2019-oled-version-with-ubuntu-18-04-lts-86181ff8892f)
+* [Razer Blade 15 (2021) for Data Science](https://github.com/EtienneMueller/razer-blade-data-science)
+* [Which RAM should I upgrade my rzaer Blade 15 with?](https://insider.razer.com/general-discussion-6/which-ram-should-i-upgrade-my-rzaer-blade-15-with-48211)
+* [Ubuntu on 2022 Razer Blade 14'' with 3070 Ti](https://insider.razer.com/razer-support-45/ubuntu-on-2022-razer-blade-14-with-3070-ti-37086)
+* [Does linux run well on razer laptops?](https://www.reddit.com/r/razer/comments/1780lpi/does_linux_run_well_on_razer_laptops/)
+* [Razer Blade 15" Base (2020) Firmware Updates](https://insider.razer.com/systems-14/razer-blade-15-base-2020-firmware-updates-12107)
+* CUDA Toolkit: `sudo apt install nvidia-cuda-toolkit`
+* [Hard freezes requiring power cycling - Ubuntu 24.04 fresh install](https://bugs.launchpad.net/ubuntu/+source/linux/+bug/2067854)
