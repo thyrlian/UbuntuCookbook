@@ -5,10 +5,11 @@ A comprehensive setup guide for Ubuntu
 
 ### Productivity
 
+* [Fcitx 5](https://github.com/fcitx/fcitx5)
+  * [Install & Config](https://medium.com/@brightoning/cozy-ubuntu-24-04-install-fcitx5-for-chinese-input-f4278b14cf6f)
 * [Obsidian](https://obsidian.md/)
   * [cross-platform sync solution](https://forum.obsidian.md/t/accessing-icloud-obsidian-folder-from-ubuntu-linux/33478/2)
 * [Xmind](https://xmind.app/)
-* [Fcitx 5](https://github.com/fcitx/fcitx5)
 * [Albert launcher](https://github.com/albertlauncher/albert)
 
 ### Development
