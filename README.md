@@ -8,6 +8,7 @@ A comprehensive setup guide for Ubuntu
 * [Obsidian](https://obsidian.md/)
   * [cross-platform sync solution](https://forum.obsidian.md/t/accessing-icloud-obsidian-folder-from-ubuntu-linux/33478/2)
 * [Xmind](https://xmind.app/)
+* [Fcitx 5](https://github.com/fcitx/fcitx5)
 * [Albert launcher](https://github.com/albertlauncher/albert)
 
 ### Development
