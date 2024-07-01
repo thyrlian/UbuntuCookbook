@@ -16,6 +16,7 @@ A comprehensive setup guide for Ubuntu
 
 * [VS Code](https://code.visualstudio.com/)
 * [Sublime Text](https://www.sublimetext.com/)
+* [Sublime Merge](https://www.sublimemerge.com/)
 * [GitKraken](https://www.gitkraken.com/)
 * [Docker](https://www.docker.com/)
 * Emulation
