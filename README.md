@@ -19,6 +19,9 @@ A comprehensive setup guide for Ubuntu
 * [Sublime Merge](https://www.sublimemerge.com/)
 * [GitKraken](https://www.gitkraken.com/)
 * [Docker](https://www.docker.com/)
+  * [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+  * [Install Docker Desktop on Ubuntu](https://docs.docker.com/desktop/install/ubuntu/)
+  * [Sign in to Docker Desktop](https://docs.docker.com/desktop/get-started/#credentials-management-for-linux-users)
 * Emulation
   * [OSX-KVM](https://github.com/kholia/OSX-KVM)
   * [darling](https://github.com/darlinghq/darling)
