@@ -5,6 +5,7 @@ A comprehensive setup guide for Ubuntu
 
 ### Productivity
 
+* [AppImageKit](https://github.com/AppImage/AppImageKit/wiki/FUSE)
 * [Fcitx 5](https://github.com/fcitx/fcitx5)
   * [Install & Config](https://medium.com/@brightoning/cozy-ubuntu-24-04-install-fcitx5-for-chinese-input-f4278b14cf6f)
 * [Obsidian](https://obsidian.md/)
