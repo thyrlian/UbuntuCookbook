@@ -3,6 +3,14 @@ A comprehensive setup guide for Ubuntu
 
 ## Configuration
 
+* Unblock the restriction on unprivileged namespace (for Ubuntu 24.04 LTS)
+  ```bash
+  # Edit the /etc/sysctl.conf file, and add one configuration to the end
+  kernel.apparmor_restrict_unprivileged_userns=0
+  # Apply the changes
+  sudo sysctl -p
+  # This ensures that the setting is applied every time the system boots up
+  ```
 * [Generating a new SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
 ## Software
