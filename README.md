@@ -28,6 +28,7 @@ A comprehensive setup guide for Ubuntu
 ### Development
 
 * [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
+  * Theme: [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 * [VS Code](https://code.visualstudio.com/)
 * [Sublime Text](https://www.sublimetext.com/)
 * [Sublime Merge](https://www.sublimemerge.com/)
