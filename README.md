@@ -28,6 +28,9 @@ A comprehensive setup guide for Ubuntu
 ### Development
 
 * [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
+  * Fonts
+    * [Powerline Font](https://github.com/powerline/fonts)
+    * [Nerd Font](https://github.com/ryanoasis/nerd-fonts)
   * Theme: [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 * [VS Code](https://code.visualstudio.com/)
 * [Sublime Text](https://www.sublimetext.com/)
