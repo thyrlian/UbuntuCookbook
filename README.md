@@ -27,6 +27,7 @@ A comprehensive setup guide for Ubuntu
 
 ### Development
 
+* [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
 * [VS Code](https://code.visualstudio.com/)
 * [Sublime Text](https://www.sublimetext.com/)
 * [Sublime Merge](https://www.sublimemerge.com/)
