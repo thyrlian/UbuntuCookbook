@@ -39,6 +39,7 @@ A comprehensive setup guide for Ubuntu
 
 ### Development
 
+* [kitty](https://github.com/kovidgoyal/kitty/?tab=readme-ov-file)
 * [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
   * Fonts
     * [Powerline Font](https://github.com/powerline/fonts)
