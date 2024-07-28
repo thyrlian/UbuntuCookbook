@@ -44,6 +44,7 @@ A comprehensive setup guide for Ubuntu
     * [Powerline Font](https://github.com/powerline/fonts)
     * [Nerd Font](https://github.com/ryanoasis/nerd-fonts)
   * Theme: [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+* [Starship](https://github.com/starship/starship)
 * [VS Code](https://code.visualstudio.com/)
 * [Sublime Text](https://www.sublimetext.com/)
 * [Sublime Merge](https://www.sublimemerge.com/)
