@@ -52,3 +52,24 @@ nmcli device status
 # If disconnected, reconnect using the saved profile
 nmcli connection up id "YourWiFiSSID"
 ```
+
+### Update System Packages
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+### Enable SSH Access
+
+```bash
+sudo systemctl enable ssh
+sudo systemctl start ssh
+sudo systemctl status ssh
+
+# (Optional) Enhance security by enabling a basic firewall
+sudo apt install ufw -y
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow ssh
+sudo ufw enable
+```
