@@ -73,3 +73,19 @@ sudo ufw default allow outgoing
 sudo ufw allow ssh
 sudo ufw enable
 ```
+
+### Check and Configure Keyboard Settings
+
+```bash
+sudo raspi-config
+
+# Navigate to: Localisation Options → Keyboard
+# Choose the following values for each prompt:
+# Keyboard model → Generic 105-key PC
+# Keyboard layout → English (US)
+# Key to function as AltGr → The default for the keyboard layout
+# Compose key → No compose key
+
+# Check and validate locale settings
+localectl status
+```
