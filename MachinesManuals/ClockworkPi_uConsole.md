@@ -72,6 +72,28 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow ssh
 sudo ufw enable
+
+# Set up passwordless key-based SSH login
+mkdir -p ~/.ssh && chmod 700 ~/.ssh && touch ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys
+
+# Append the client’s public key (e.g., ~/.ssh/id_rsa.pub) to the authorized_keys file created above
+
+# Ensure PubkeyAuthentication is enabled
+grep -qE '^\s*#?\s*PubkeyAuthentication\s+' /etc/ssh/sshd_config && \
+  sudo sed -i 's/^\s*#\?\s*PubkeyAuthentication\s\+.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config || \
+  echo -e '\n# Enable public key authentication\nPubkeyAuthentication yes' | sudo tee -a /etc/ssh/sshd_config
+
+# Disable PasswordAuthentication for better security
+grep -qE '^\s*#?\s*PasswordAuthentication\s+' /etc/ssh/sshd_config && \
+  sudo sed -i 's/^\s*#\?\s*PasswordAuthentication\s\+.*/PasswordAuthentication no/' /etc/ssh/sshd_config || \
+  echo -e '\n# Disable password login for security\nPasswordAuthentication no' | sudo tee -a /etc/ssh/sshd_config
+
+# Restart the SSH service to apply the changes
+sudo systemctl restart ssh
+
+# Optional: Limit SSH login rate to mitigate brute-force attacks
+# This enhances security without disabling PasswordAuthentication, it simply throttles repeated failed attempts
+sudo ufw limit ssh
 ```
 
 ### Check and Configure Keyboard Settings
