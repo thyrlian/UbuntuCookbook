@@ -96,6 +96,29 @@ sudo systemctl restart ssh
 sudo ufw limit ssh
 ```
 
+### Add and Configure Desktop Environment: XFCE
+
+```bash
+# Update system packages
+sudo apt update && sudo apt upgrade -y
+
+# Install XFCE desktop environment and common components
+sudo apt install xfce4 xfce4-goodies -y
+
+# Install LightDM as the display manager (lightweight login screen for XFCE)
+sudo apt install lightdm -y
+
+# Set system to boot by default into graphical target (GUI) instead of multi-user target (text-only TTY)
+sudo systemctl set-default graphical.target
+
+# (Optional) Check the current default target
+systemctl get-default
+# Should return: graphical.target
+
+# Reboot to launch the graphical interface
+sudo reboot
+```
+
 ### Check and Configure Keyboard Settings
 
 ```bash
