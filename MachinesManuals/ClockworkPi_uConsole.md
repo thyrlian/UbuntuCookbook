@@ -111,3 +111,15 @@ sudo raspi-config
 # Check and validate locale settings
 localectl status
 ```
+
+### Check Battery/Charging Status
+
+```bash
+# Check battery status (capacity, charge state, voltage, and health)
+clear
+echo "[Battery Info]"
+echo "Battery: $(cat /sys/class/power_supply/axp20x-battery/capacity)%"
+echo "Status : $(cat /sys/class/power_supply/axp20x-battery/status)"
+echo "Voltage: $(awk '{printf "%.2f", $1 / 1000000}' /sys/class/power_supply/axp20x-battery/voltage_now) V"
+echo "Health : $(cat /sys/class/power_supply/axp20x-battery/health)"
+```
