@@ -53,15 +53,13 @@ nmcli device status
 nmcli connection up id "YourWiFiSSID"
 ```
 
-### Update System Packages
-
-```bash
-sudo apt update && sudo apt upgrade -y
-```
-
 #### Enable SSH Access
 
 ```bash
+# Update System Packages
+sudo apt update && sudo apt upgrade -y
+
+# Enable and start SSH service
 sudo systemctl enable ssh
 sudo systemctl start ssh
 sudo systemctl status ssh
