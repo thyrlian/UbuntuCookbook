@@ -94,6 +94,75 @@ sudo systemctl restart ssh
 sudo ufw limit ssh
 ```
 
+### EEPROM
+
+#### Update EEPROM Firmware
+
+```bash
+# Check current EEPROM version
+vcgencmd version
+vcgencmd bootloader_version
+
+# Check for EEPROM bootloader update
+sudo rpi-eeprom-update
+
+# Apply update if available
+sudo rpi-eeprom-update -a
+sudo reboot
+```
+
+#### Update EEPROM Configuration
+
+* **Step 1**: Backup current configuration
+```bash
+sudo mkdir -p /etc/rpi-eeprom-backup
+sudo rpi-eeprom-config | sudo tee /etc/rpi-eeprom-backup/config-backup.txt > /dev/null
+```
+
+* **Step 2**: (Optional) View the backup
+```bash
+cat /etc/rpi-eeprom-backup/config-backup.txt
+
+# Expected output:
+
+[all]
+BOOT_UART=1
+# Default BOOT_ORDER for provisioning
+# SD -> NVMe -> USB -> Network
+BOOT_ORDER=0xf2461
+```
+
+* **Step 3**: Edit EEPROM configuration
+```bash
+sudo rpi-eeprom-config -e
+```
+In the editor, replace the full content with:
+```bash
+[all]
+BOOT_UART=1
+
+# Switch off PMIC outputs on HALT
+POWER_OFF_ON_HALT=1
+
+# Try boot on SDCard repeatedly
+BOOT_ORDER=0xf1
+SD_BOOT_MAX_RETRIES=2
+
+# Slow down SDCard SDR Mode on bootloader
+SD_QUIRKS=1
+```
+
+* **Step 4**: Hard shutdown and power cycle
+```bash
+sudo shutdown -h now
+# Then physically disconnect power (and battery if needed), wait 10+ seconds, then power on
+```
+
+* **Step 5**: Verify changes applied
+```bash
+sudo rpi-eeprom-config
+```
+
 ### Desktop Environment
 
 #### Add and Configure XFCE
