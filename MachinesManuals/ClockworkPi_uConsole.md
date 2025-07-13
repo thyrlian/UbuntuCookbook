@@ -59,7 +59,7 @@ nmcli connection up id "YourWiFiSSID"
 sudo apt update && sudo apt upgrade -y
 ```
 
-### Enable SSH Access
+#### Enable SSH Access
 
 ```bash
 sudo systemctl enable ssh
@@ -96,7 +96,9 @@ sudo systemctl restart ssh
 sudo ufw limit ssh
 ```
 
-### Add and Configure Desktop Environment: XFCE
+### Desktop Environment
+
+#### Add and Configure XFCE
 
 ```bash
 # Update system packages
@@ -119,7 +121,7 @@ systemctl get-default
 sudo reboot
 ```
 
-### Rotate Display for Login Screen and Desktop (Optional)
+#### Rotate Display for Login Screen and Desktop (Optional)
 
 ```bash
 # Create LightDM config directory if it doesn't exist
@@ -137,7 +139,9 @@ echo 'display-setup-script=xrandr --output DSI-1 --rotate right' | sudo tee -a /
 sudo reboot
 ```
 
-### Check and Configure Keyboard Settings
+### Keyboard
+
+#### Check and Configure Keyboard Settings
 
 ```bash
 sudo raspi-config
@@ -153,7 +157,13 @@ sudo raspi-config
 localectl status
 ```
 
-### Check Battery/Charging Status
+#### Trackball
+
+The trackball module (Clockwork uConsole Keyboard Mouse) registers a **press-down** as a **middle click**.  Use the **L** and **R** buttons next to the arrow keys to perform **left** and **right mouse clicks** respectively.
+
+### Battery
+
+#### Check Battery/Charging Status
 
 ```bash
 # Check battery status (capacity, charge state, voltage, and health)
