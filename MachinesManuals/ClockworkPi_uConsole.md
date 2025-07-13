@@ -196,3 +196,24 @@ sudo reboot
 # Verify that the parameter has taken effect
 mount | grep " on / "
 ```
+
+#### Add App Distribution Platform: Flatpak (Optional)
+
+```bash
+# Install Flatpak
+sudo apt update && sudo apt install flatpak -y
+
+# (Optional) Install plugin to integrate Flatpak with graphical software manager (GNOME Software)
+sudo apt install gnome-software-plugin-flatpak -y
+
+# Add the Flathub repository (the main source of Flatpak apps)
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Reboot to apply environment changes
+sudo reboot
+
+# Example: Install Chromium browser
+flatpak install flathub org.chromium.Chromium
+
+# Tip: Some apps may not appear in Application Finder until after a reboot or logout/login
+```
