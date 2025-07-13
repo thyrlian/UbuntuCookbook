@@ -89,7 +89,7 @@ grep -qE '^\s*#?\s*PasswordAuthentication\s+' /etc/ssh/sshd_config && \
 # Restart the SSH service to apply the changes
 sudo systemctl restart ssh
 
-# Optional: Limit SSH login rate to mitigate brute-force attacks
+# (Optional) Limit SSH login rate to mitigate brute-force attacks
 # This enhances security without disabling PasswordAuthentication, it simply throttles repeated failed attempts
 sudo ufw limit ssh
 ```
