@@ -177,7 +177,7 @@ echo "Health : $(cat /sys/class/power_supply/axp20x-battery/health)"
 
 #### Optimize Filesystem Write Behavior (Optional)
 
-Improve system stability during sudden power loss or low-battery situations by increasing the commit interval (i.e., how frequently ext4 journal commits data to disk).
+Improve system stability during **sudden power loss** or **low-battery situations** by increasing the commit interval (i.e., how frequently ext4 journal commits data to disk).
 
 This is especially important for systems using microSD storage (e.g. Raspberry Pi Compute Module Lite), which are more vulnerable to corruption compared to Compute Module with eMMC that often include better hardware-level caching and power-loss protection.
 
