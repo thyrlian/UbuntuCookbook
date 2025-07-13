@@ -119,6 +119,24 @@ systemctl get-default
 sudo reboot
 ```
 
+### Rotate Display for Login Screen and Desktop (Optional)
+
+```bash
+# Create LightDM config directory if it doesn't exist
+sudo mkdir -p /usr/share/lightdm/lightdm.conf.d
+
+# Check the actual display output name (e.g., DSI-1, DSI-2, HDMI-1, etc.)
+xrandr --query
+
+# Create a config file to rotate the screen before LightDM starts
+# Replace 'DSI-1' below with the correct name shown as "connected" in the previous command
+echo '[Seat:*]' | sudo tee /usr/share/lightdm/lightdm.conf.d/50-display-rotate.conf > /dev/null
+echo 'display-setup-script=xrandr --output DSI-1 --rotate right' | sudo tee -a /usr/share/lightdm/lightdm.conf.d/50-display-rotate.conf > /dev/null
+
+# Reboot to apply the change
+sudo reboot
+```
+
 ### Check and Configure Keyboard Settings
 
 ```bash
