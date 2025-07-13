@@ -172,3 +172,27 @@ echo "Status : $(cat /sys/class/power_supply/axp20x-battery/status)"
 echo "Voltage: $(awk '{printf "%.2f", $1 / 1000000}' /sys/class/power_supply/axp20x-battery/voltage_now) V"
 echo "Health : $(cat /sys/class/power_supply/axp20x-battery/health)"
 ```
+
+### Miscellaneous
+
+#### Optimize Filesystem Write Behavior (Optional)
+
+Improve system stability during sudden power loss or low-battery situations by increasing the commit interval (i.e., how frequently ext4 journal commits data to disk).
+
+This is especially important for systems using microSD storage (e.g. Raspberry Pi Compute Module Lite), which are more vulnerable to corruption compared to Compute Module with eMMC that often include better hardware-level caching and power-loss protection.
+
+```bash
+# Backup original fstab
+sudo cp /etc/fstab /etc/fstab.bak
+
+# Add `commit=30` to the root (/) ext4 mount options if not already present
+sudo sed -i '/^[^#].*\s\/\s\+ext4/ {
+  /commit=30/! s/\<defaults\>\([^,]*\)\(,[^ ]*\)*/defaults\1\2,commit=30/
+}' /etc/fstab
+
+# Reboot to apply changes
+sudo reboot
+
+# Verify that the parameter has taken effect
+mount | grep " on / "
+```
