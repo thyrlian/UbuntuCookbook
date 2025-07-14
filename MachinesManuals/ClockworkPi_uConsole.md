@@ -206,6 +206,58 @@ echo 'display-setup-script=xrandr --output DSI-1 --rotate right' | sudo tee -a /
 sudo reboot
 ```
 
+#### Display System Tray Icons for WiFi and Bluetooth
+
+* WiFi
+
+```bash
+# Install the Network Manager applet
+sudo apt update
+sudo apt install network-manager-gnome -y
+
+# (Optional) Run it immediately
+nm-applet &
+
+# Set it to auto-start on login
+mkdir -p ~/.config/autostart
+
+cat <<EOF > ~/.config/autostart/nm-applet.desktop
+[Desktop Entry]
+Type=Application
+Exec=nm-applet
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Network Manager Applet
+Comment=Show WiFi status in system tray
+EOF
+```
+
+* Bluetooth
+
+```bash
+# Install the Bluetooth manager
+sudo apt update
+sudo apt install blueman -y
+
+# (Optional) Run it immediately
+blueman-applet &
+
+# Set it to auto-start on login
+mkdir -p ~/.config/autostart
+
+cat <<EOF > ~/.config/autostart/blueman-applet.desktop
+[Desktop Entry]
+Type=Application
+Exec=blueman-applet
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Bluetooth Manager Applet
+Comment=Show Bluetooth status in system tray
+EOF
+```
+
 ### Language
 
 #### Add Chinese language support
