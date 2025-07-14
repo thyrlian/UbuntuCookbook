@@ -352,6 +352,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 sudo reboot
 
 # Example: Install Chromium browser
+# !!!Note: Chromium installed via Flatpak does NOT support Widevine DRM due to sandboxing restrictions, so Netflix and other DRM-protected content will NOT play.
 flatpak install flathub org.chromium.Chromium
 # Check current Flatpak permissions for Chromium
 flatpak info --show-permissions org.chromium.Chromium
