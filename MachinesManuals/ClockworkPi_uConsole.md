@@ -365,3 +365,9 @@ flatpak override --user org.chromium.Chromium --env=LANG=zh_CN.UTF-8
 
 # Tip: Some apps may not appear in Application Finder until after a reboot or logout/login
 ```
+
+## Known Issues
+
+* Static noise when battery is low (CM5-specific)
+
+  When the battery level gets low, you may hear noticeable static or background noise from the speaker.  This issue is specific to Raspberry Pi CM5, because uConsole’s onboard audio is generated via PWM (Pulse Width Modulation) rather than using a dedicated DAC.  On the CM5, when under heavy load or low battery conditions, its power management module can exhibit minor voltage fluctuations.  These fluctuations affect the PWM signal stability, causing noise artifacts to appear in the audio output.
