@@ -206,6 +206,24 @@ echo 'display-setup-script=xrandr --output DSI-1 --rotate right' | sudo tee -a /
 sudo reboot
 ```
 
+### Language
+
+#### Add Chinese language support
+
+```bash
+# Install locale management tools
+sudo apt update
+sudo apt install locales -y
+
+# Interactively enable zh_CN.UTF-8
+sudo dpkg-reconfigure locales
+
+# Verify that zh_CN.UTF-8 is now available
+locale -a | grep zh_CN
+# Expected output:
+zh_CN.utf8
+```
+
 ### Keyboard
 
 #### Check and Configure Keyboard Settings
@@ -283,6 +301,15 @@ sudo reboot
 
 # Example: Install Chromium browser
 flatpak install flathub org.chromium.Chromium
+# Check current Flatpak permissions for Chromium
+flatpak info --show-permissions org.chromium.Chromium
+# Add read-only access to common font directories
+flatpak override --user org.chromium.Chromium \
+  --filesystem=/usr/share/fonts:ro \
+  --filesystem=/usr/local/share/fonts:ro \
+  --filesystem=~/.fonts:ro
+# Set environment variable to use Chinese locale
+flatpak override --user org.chromium.Chromium --env=LANG=zh_CN.UTF-8
 
 # Tip: Some apps may not appear in Application Finder until after a reboot or logout/login
 ```
