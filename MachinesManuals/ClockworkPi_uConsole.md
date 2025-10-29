@@ -388,9 +388,20 @@ flatpak override --user org.chromium.Chromium --env=LANG=zh_CN.UTF-8
 
 #### Enhance Wireless Connection
 
-The built-in Wi-Fi module (Broadcom chipset with the antenna) delivers rather weak signal performance.  Therefore, it is highly recommended to keep a compact USB Wi-Fi adapter permanently connected to improve wireless stability and range.  After extensive testing, the [TP-Link Archer T2U Nano AC600 Nano Wireless USB Adapter](https://www.tp-link.com/en/home-networking/adapter/archer-t2u-nano/) has proven to be a reliable and effective choice for this purpose.
+The built-in Wi-Fi module (Broadcom chipset with the onboard/external antenna) delivers relatively weak signal performance.  Therefore, it is highly recommended to keep a compact USB Wi-Fi adapter permanently connected to improve wireless stability and range.  After extensive testing, the [TP-Link Archer T2U Nano AC600 Nano Wireless USB Adapter](https://www.tp-link.com/en/home-networking/adapter/archer-t2u-nano/) has proven to be a reliable and effective choice for this purpose.
 
-The setup process is outlined below.
+Before proceeding with the USB Wi-Fi adapter setup, ensure that the external antenna (the better one) is enabled instead of the default onboard antenna.  You can verify this by checking your configuration file:
+
+```console
+cat /boot/firmware/config.txt
+
+# You should see the following line:
+dtparam=ant2
+# This confirms that the external antenna is active and being used.
+# Otherwise, add this line to the configuration file and reboot.
+```
+
+The setup process for the USB Wi-Fi adapter is outlined below.
 
 ```console
 # --- Identify the USB Wi-Fi Adapter ---
