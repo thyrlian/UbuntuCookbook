@@ -6,6 +6,23 @@
 
 ## Setup
 
+### Environment Variables
+
+```console
+nano ~/.bashrc
+```
+
+```bash
+# ------------------------------------------------------------
+# Add administrative system paths to user PATH
+# Purpose: Ensure user sessions can access system utilities
+# (e.g., /sbin/iw for wireless tools)
+# ------------------------------------------------------------
+if ! echo "$PATH" | grep -q "/sbin"; then
+    export PATH="$PATH:/sbin:/usr/sbin"
+fi
+```
+
 ### Network
 
 #### Unblock Wi-Fi and Set WLAN Country
