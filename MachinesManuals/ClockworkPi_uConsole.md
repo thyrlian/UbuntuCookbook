@@ -384,6 +384,101 @@ flatpak override --user org.chromium.Chromium --env=LANG=zh_CN.UTF-8
 # Tip: Some apps may not appear in Application Finder until after a reboot or logout/login
 ```
 
+### Hardware
+
+#### Enhance Wireless Connection
+
+The built-in Wi-Fi module (Broadcom chipset with the antenna) delivers rather weak signal performance.  Therefore, it is highly recommended to keep a compact USB Wi-Fi adapter permanently connected to improve wireless stability and range.  After extensive testing, the [TP-Link Archer T2U Nano AC600 Nano Wireless USB Adapter](https://www.tp-link.com/en/home-networking/adapter/archer-t2u-nano/) has proven to be a reliable and effective choice for this purpose.
+
+The setup process is outlined below.
+
+```console
+# --- Identify the USB Wi-Fi Adapter ---
+# Check that the system recognizes the adapter and confirm the chipset.
+lsusb
+# => Bus xxx Device xxx: ID xxxx:xxxx TP-Link AC600 wireless Realtek RTL8811AU [Archer T2U Nano]
+
+# --- Check the Current Kernel Version ---
+# Needed to link the correct kernel headers.
+uname -r
+# => kernel version (e.g., 6.12.55-v8-16k+)
+
+# --- Link Kernel Headers for DKMS Compilation ---
+# Ensure both 'build' and 'source' symlinks are correctly pointing to the headers.
+KVER=$(uname -r)
+sudo mkdir -p /lib/modules/${KVER}/{build,source}
+sudo ln -sf /usr/src/linux-headers-${KVER} /lib/modules/${KVER}/build
+sudo ln -sf /usr/src/linux-headers-${KVER} /lib/modules/${KVER}/source
+ls -l /lib/modules/${KVER}/build
+ls -l /lib/modules/${KVER}/source
+
+# --- Install Required Build Dependencies ---
+# 'dkms' for dynamic kernel module support
+# 'build-essential' for compiler tools
+# 'git' to clone the driver repo
+# 'bc' for math expressions
+sudo apt update
+sudo apt install -y dkms build-essential git bc
+
+# --- Download and Build the Driver ---
+mkdir -p ~/Drivers
+cd ~/Drivers
+git clone https://github.com/morrownr/8821au-20210708 8821au
+cd 8821au
+sudo ./install-driver.sh
+# This will automatically build and install the DKMS module.
+# The installed driver options file is stored here: /etc/modprobe.d/8821au.conf
+
+# --- Verify and Set the Wireless Regulatory Domain ---
+# Check the current region configuration.
+# If the global regulatory domain is already set to 'DE', no action is needed.
+iw reg get
+# Otherwise, run the following command to set it manually:
+sudo iw reg set DE
+
+# --- Check Adapter Availability ---
+# Verify that wlan1 (the external adapter) is recognized and active.
+# You can configure it via 'iwconfig' or through the graphical Wi-Fi UI.
+iwconfig wlan1
+
+# --- Prioritize External Wi-Fi Adapter Globally ---
+# Create a dispatcher script to automatically set route priorities when interfaces go up.
+sudo nano /etc/NetworkManager/dispatcher.d/10-wifi-metric.sh
+
+# -------------------------------------------------- #
+#!/bin/bash
+# 10-wifi-metric.sh
+# Purpose: Always prefer the external USB Wi-Fi adapter (wlan1) over the internal Wi-Fi (wlan0)
+# This script runs automatically when NetworkManager brings an interface up or down.
+
+interface=$1
+action=$2
+
+case "$action" in
+    up)
+        if [ "$interface" = "wlan1" ]; then
+            # External USB Wi-Fi: set a lower route metric (higher priority)
+            nmcli device modify wlan1 ipv4.route-metric 10 ipv6.route-metric 10
+        elif [ "$interface" = "wlan0" ]; then
+            # Internal Wi-Fi: set a higher route metric (lower priority)
+            nmcli device modify wlan0 ipv4.route-metric 20 ipv6.route-metric 20
+        fi
+        ;;
+esac
+# -------------------------------------------------- #
+
+# Make the script executable
+sudo chmod +x /etc/NetworkManager/dispatcher.d/10-wifi-metric.sh
+# Restart NetworkManager to apply changes
+sudo systemctl restart NetworkManager
+# Verify route priority
+# wlan1 should have metric=10 and wlan0 metric=20.
+ip route
+
+# --- Reboot to take effect ---
+sudo reboot
+```
+
 ## Known Issues
 
 * Static noise when battery is low (CM5-specific)
