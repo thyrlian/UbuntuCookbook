@@ -7,7 +7,7 @@
     * Go to **Utilities** → **Startup Security Utility** (Enter macOS password if authentication needed).
     * Set **Secure Boot** to **No Security**.
     * Set **Allowed Boot Media** to **Allow booting from external or removable media**.
-* Prepare a bootable Ubuntu OS USB drive
+* Follow [T2Linux](https://t2linux.org) wiki for system preparations and to download/flash the T2-optimized Ubuntu ISO
 * Hold **⌥** key and boot up Mac
 * Choose the USB drive to boot from
 * In the GRUB UI, select ”Try or Install Ubuntu”
