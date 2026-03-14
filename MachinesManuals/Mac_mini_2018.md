@@ -2,7 +2,11 @@
 
 ## Setup
 
-* Disable [Secure Boot](https://support.apple.com/zh-cn/HT208198) on Mac with T2 Security Chip
+* Configure **[T2 Security Chip Settings](https://support.apple.com/zh-cn/HT208198)**:
+    * Boot into macOS Recovery (Hold Command + R during startup).
+    * Go to **Utilities** → **Startup Security Utility** (Enter macOS password if authentication needed).
+    * Set **Secure Boot** to **No Security**.
+    * Set **Allowed Boot Media** to **Allow booting from external or removable media**.
 * Prepare a bootable Ubuntu OS USB drive
 * Hold **⌥** key and boot up Mac
 * Choose the USB drive to boot from
