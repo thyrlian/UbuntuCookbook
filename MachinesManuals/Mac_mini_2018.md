@@ -76,13 +76,13 @@
         * https://askubuntu.com/questions/146425/how-can-i-install-and-download-drivers-without-internet
 * Fan Control
 
-To ensure precise fan control and prevent overheating on this Mac mini, install and use the mbpfan daemon.
+    To ensure precise fan control and prevent overheating on this Mac mini, install and use the mbpfan daemon.
 
-```shell
-sudo apt install mbpfan
-sudo systemctl enable mbpfan
-sudo systemctl start mbpfan
-```
+    ```shell
+    sudo apt install mbpfan
+    sudo systemctl enable mbpfan
+    sudo systemctl start mbpfan
+    ```
 
 ### References
 
