@@ -24,6 +24,7 @@
   ```bash
   # Verify SSH login with the new user in a new terminal
   ssh your_username@your_server_ip
+  
   # Verify sudo privileges
   sudo whoami
   ```
