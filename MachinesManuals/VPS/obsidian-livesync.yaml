@@ -8,8 +8,8 @@ services:
       - COUCHDB_USER=${COUCHDB_USER}
       - COUCHDB_PASSWORD=${COUCHDB_PASSWORD}
     volumes:
-      - /opt/apps/obsidian-livesync/data/data:/opt/couchdb/data
-      - /opt/apps/obsidian-livesync/data/local.ini:/opt/couchdb/etc/local.ini
+      - /opt/apps/obsidian-livesync/data:/opt/couchdb/data
+      - /opt/apps/obsidian-livesync/local.ini:/opt/couchdb/etc/local.ini
     # Ports not needed when already passed to Traefik
     #ports:
     #  - 5984:5984
