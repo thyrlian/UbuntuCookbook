@@ -152,3 +152,42 @@
   # Activate group membership changes
   newgrp docker
   ```
+
+## Service Deployment & Maintenance
+
+* Create a dedicated service user
+  ```bash
+  # Create a dedicated user for running Docker services
+  sudo adduser --system --group --no-create-home apps
+
+  # Check the user's UID and GID
+  id apps
+  ```
+
+* Create a standard directory layout
+  ```bash
+  # Create the base directory for Docker services and data
+  sudo mkdir -p /opt/apps
+
+  # Assign ownership to the dedicated service user
+  sudo chown -R apps:apps /opt/apps
+  ```
+
+  Each service should use its own directory under `/opt/apps`, for example:
+  ```console
+  /opt/apps/
+  └── <your_app>
+      ├── compose.yaml
+      ├── data/
+      └── .env
+  ```
+
+  You can prepare a per-service directory by:
+  ```bash
+  SERVICE_NAME="your_service_name" # replace with your service name
+
+  sudo mkdir -p /opt/apps/"$SERVICE_NAME"/data
+  sudo touch /opt/apps/"$SERVICE_NAME"/compose.yaml
+  sudo touch /opt/apps/"$SERVICE_NAME"/.env
+  sudo chown -R apps:apps /opt/apps/"$SERVICE_NAME"
+  ```
