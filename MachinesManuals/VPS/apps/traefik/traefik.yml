@@ -20,7 +20,7 @@ providers:
 certificatesResolvers:
   letsencrypt:
     acme:
-      email: your@email.com # replace with your actual email address
+      email: ""  # overridden by TRAEFIK_CERTIFICATESRESOLVERS_LETSENCRYPT_ACME_EMAIL in compose.yaml
       storage: /data/acme.json
       httpChallenge:
         entryPoint: web
