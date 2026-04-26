@@ -1,8 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
-DATA_DIR="./data"
-LOCAL_INI="./local.ini"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DATA_DIR="$SCRIPT_DIR/data"
+LOCAL_INI="$SCRIPT_DIR/local.ini"
 
 mkdir -p "$DATA_DIR"
 chown -R 5984:5984 "$DATA_DIR"

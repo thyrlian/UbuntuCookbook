@@ -1,7 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
-source .env
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+source "$SCRIPT_DIR/.env"
 
 COUCHDB_URL="https://${LIVESYNC_DOMAIN}"
 

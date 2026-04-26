@@ -1,7 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-ACME_FILE="./data/acme.json"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ACME_FILE="$SCRIPT_DIR/data/acme.json"
 
 mkdir -p "$(dirname "$ACME_FILE")"
 touch "$ACME_FILE"
