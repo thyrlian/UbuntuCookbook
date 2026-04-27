@@ -25,7 +25,29 @@ until curl -fsS -u "${COUCHDB_USER}:${COUCHDB_PASSWORD}" "${COUCHDB_URL}/_up" >/
   sleep 5
 done
 
-curl -fsS -X PUT "${COUCHDB_URL}/_users" -u "${COUCHDB_USER}:${COUCHDB_PASSWORD}" || true
-curl -fsS -X PUT "${COUCHDB_URL}/_replicator" -u "${COUCHDB_USER}:${COUCHDB_PASSWORD}" || true
+ensure_db() {
+  local db_name="$1"
+  local status
+
+  status=$(curl -sS -o /dev/null -w "%{http_code}" \
+    -X PUT "${COUCHDB_URL}/${db_name}" \
+    -u "${COUCHDB_USER}:${COUCHDB_PASSWORD}")
+
+  case "$status" in
+    201|202)
+      echo "Database '${db_name}' created."
+      ;;
+    412)
+      echo "Database '${db_name}' already exists."
+      ;;
+    *)
+      echo "Failed to create database '${db_name}'. HTTP status: ${status}"
+      exit 1
+      ;;
+  esac
+}
+
+ensure_db "_users"
+ensure_db "_replicator"
 
 echo "CouchDB init done."
