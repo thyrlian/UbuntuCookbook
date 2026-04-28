@@ -1,6 +1,15 @@
 #!/bin/bash
 set -euo pipefail
 
+# Before executing this script, make sure:
+# - DNS records already point to your VPS:
+#   - sync.yourdomain.com
+#   - traefik.yourdomain.com
+# - Real values have been added to all .env files.
+# - TCP ports 80 and 443 are allowed by both the cloud firewall and UFW.
+# - Docker and Docker Compose are installed and working.
+# - The current user can run `docker compose`.
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Traefik
