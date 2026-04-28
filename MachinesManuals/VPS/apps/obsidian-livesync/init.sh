@@ -15,7 +15,7 @@ COUCHDB_URL="https://${LIVESYNC_DOMAIN}"
 MAX_RETRIES=24  # 2 minutes
 RETRY=0
 
-until curl -fsS -u "${COUCHDB_USER}:${COUCHDB_PASSWORD}" "${COUCHDB_URL}/_up" >/dev/null; do
+until curl -fsS -u "${COUCHDB_USER}:${COUCHDB_PASSWORD}" "${COUCHDB_URL}/_up" >/dev/null 2>&1; do
   RETRY=$((RETRY + 1))
   if [ "$RETRY" -ge "$MAX_RETRIES" ]; then
     echo "CouchDB did not become ready in time. Aborting."
