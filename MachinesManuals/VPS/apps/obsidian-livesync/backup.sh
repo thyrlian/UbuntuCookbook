@@ -23,12 +23,12 @@ set -Eeuo pipefail
 #   other non-zero = actual script / tar / filesystem failure
 #
 # Common usage:
-#   ./backup-data.sh
+#   ./backup.sh
 #
 # Optional overrides:
-#   BACKUP_DIR=/tmp ./backup-data.sh
-#   RETENTION_DAYS=365 ./backup-data.sh
-#   BACKUP_PREFIX=my-service-data ./backup-data.sh
+#   BACKUP_DIR=/tmp ./backup.sh
+#   RETENTION_DAYS=365 ./backup.sh
+#   BACKUP_PREFIX=my-service-data ./backup.sh
 
 APP_DIR="${APP_DIR:-/opt/apps/obsidian-livesync}"
 DATA_RELATIVE_PATH="${DATA_RELATIVE_PATH:-data}"
